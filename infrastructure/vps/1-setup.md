@@ -1,6 +1,8 @@
-# Setting Up My First VPS - Learning Notes
+# VPS Setup Guide - Learning from Scratch
 
-Got my hands on a VPS recently and wanted to document what I learned while setting it up.
+*Last updated: August 2025*
+
+Got my hands on a VPS recently and wanted to document what I learned while setting it up. This guide covers the essential security and setup steps I wish I had known from the start.
 
 ---
 
