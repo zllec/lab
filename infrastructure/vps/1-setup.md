@@ -226,6 +226,7 @@ w
 Now that I have a secure box, I'm thinking about:
 
 - [Docker installation](./docker-install.md) - For containerized applications
+- [Kubernetes basics](../k8s/01-minikube-basics.md) - Container orchestration learning
 - Kubernetes The Hard Way
 - Maybe a web server
 - Some kind of monitoring

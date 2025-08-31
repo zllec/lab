@@ -11,6 +11,7 @@ This repository is my public learning journal where I document everything from h
 
 ### 🚀 Infrastructure  
 - **[VPS Setup Guide](./infrastructure/vps/)** - First-time VPS configuration with security best practices
+- **[Kubernetes Learning](./infrastructure/k8s/)** - Container orchestration journey from local to production
 
 ### 🔬 Experiments
 *Coming soon - various tech experiments and explorations*
