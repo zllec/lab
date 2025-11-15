@@ -210,13 +210,3 @@ minikube delete
 - **Minikube makes local development** incredibly easy
 - **kubectl is your main interface** for everything Kubernetes
 
-## What's Next
-
-- Learn about ConfigMaps and Secrets for configuration
-- Explore persistent volumes for data storage
-- Try multi-container pods
-- Maybe tackle "Kubernetes The Hard Way" for deeper understanding
-
----
-
-*This is part of my infrastructure learning journey. Previous: [Docker Installation](../vps/docker-install.md)*
