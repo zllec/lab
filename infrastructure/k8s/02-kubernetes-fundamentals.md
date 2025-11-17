@@ -8,13 +8,24 @@ For container orchestration - deployment, scaling in/out, decommission
 ```bash
 kubectl get namespaces
 kubectl config rename-context <cluster_name> <new_name>
+```
 
-```
-```
+# Cluster
+
+```bash
+
+# check if kubectl is installed
+kubectl version
+
+# check the current cluster
+kubectl cluster_info
+
+# list cluster's nodes
+kubectl get nodes
 ```
 
 # Pod
-- smallest unit in kubernetest
+- smallest unit in Kubernetes
 - can contain single, multi, or init containers
 - has assigned networking and storage(Volumes)
 
@@ -23,7 +34,7 @@ kubectl config rename-context <cluster_name> <new_name>
 kubectl get pods
 
 # run a pod
-kubectl run <name> --image=nginx
+kubectl run <pod_name> --image=nginx
 
 # get pod details
 kubectl describe pods <pod-name>
@@ -53,11 +64,20 @@ kubectl delete pods -n my_namespace my_namespace_podname
 kubectl delete namespaces my_namespace
 ```
 
-# Linux Tips 
+# Working with pods
 
 ```bash
-# pipe help result to Vim or less for better search and navigation
-kubectl config --help | vim 
-kubectl config --help | less
-```
+# this "tries" to run the pod and outputs either yaml or json
+# see --dry-run help for more info
+# Why do this? to quickly generate a manifest file
+kubectl run nginx-yaml --image=nginx --dry-run=client -o yaml
 
+# run the yaml file and provision the contents
+kubectl apply -f nginx-yaml.yaml
+
+# describe to see changes
+kubectl describe pods nginx-yaml
+
+# get inside the container
+kubectl exec -it name_of_the_pod -- /bin/bash
+```
