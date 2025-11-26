@@ -73,3 +73,5 @@ docker exec -it container_name /bin/bash
 - there are containers that the entrypoint is a binary
   - use `docker inspect alpine/httpie:latest` to see `Cmd` and `Entrypoint`. These two properties shows the default arg when you run `docker run image`
   - use `docker run -it --entrypoint sh alpine/httpie:latest` to override the default run arguments. This will open an interactive shell in the docker image
+- to pass env variable during `docker run` use --env KEY="VALUE"
+  - `docker run -it --env POSTGRES_USER="admin" --env POSTGRES_PASSWORD="1234" postgres`
