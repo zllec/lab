@@ -61,6 +61,10 @@ volumes:
 ---
 
 - Instrument Go server -> expose endpoint for Prometheus to scrape
+
+### Prometheus Notes:
+- You define metric ("the thing"), labels/dimension ("characteristics of the thing")
+- e.g. 
 - Prometheus Best Practices
      ✅ Do This
      1. Keep label cardinality low (<100 unique combinations per metric)
