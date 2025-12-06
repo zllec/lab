@@ -47,3 +47,9 @@ kubectl exec -it nginx-test -- /bin/bash
 - ClusterIP is just a way to expose the pods within the cluster
 - NodePort and LoadBalancer if you want to expose to the outside world
 - ExternalName is primarily is for DNS redirects
+
+### Gateway
+- exposes Services outside the cluster
+- install this:
+`kubectl apply --server-side -f https://github.com/envoyproxy/gateway/releases/download/v1.5.1/install.yaml`
+
