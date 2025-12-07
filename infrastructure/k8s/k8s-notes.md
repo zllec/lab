@@ -53,3 +53,5 @@ kubectl exec -it nginx-test -- /bin/bash
 - install this:
 `kubectl apply --server-side -f https://github.com/envoyproxy/gateway/releases/download/v1.5.1/install.yaml`
 
+### Storage
+- containers storage are ephemeral
