@@ -70,3 +70,9 @@ kubectl exec -it nginx-test -- /bin/bash
 
 ### Gotchas
 - Pods can have one or more containers inside but since they are in the same pods, having same port containers will not be allowed
+- Manifests uses metadata.name to apply to the target
+
+### Limits
+- Deployment sets the allowed CPU/ RAM limit
+- ConfigMap sets what the application will use even if it's way above the Deployment limit. The App will crash if not enough memory
+- If limited by CPU, the app will go slower, if RAM limit has reached, it will crash
