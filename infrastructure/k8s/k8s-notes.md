@@ -56,6 +56,17 @@ kubectl exec -it nginx-test -- /bin/bash
 ### Storage
 - containers are storage are ephemeral
 - we use K8s volumes
+- Persistent Volume allows you to persist data 
+
+### Persistent Volume
+- pretty much like ConfigMap when attaching to a deployment
+- can be created statically or dynamically
+- Static PVs are created manually by the admin
+- Dynamic PVs are created automatically when a pod requests a volume that doesn't exist yet
+
+### Persistent Volume Claim
+-  **requests** for a PV
+- attached to a pvc
 
 ### Gotchas
 - Pods can have one or more containers inside but since they are in the same pods, having same port containers will not be allowed
