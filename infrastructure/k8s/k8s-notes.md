@@ -56,3 +56,6 @@ kubectl exec -it nginx-test -- /bin/bash
 ### Storage
 - containers are storage are ephemeral
 - we use K8s volumes
+
+### Gotchas
+- Pods can have one or more containers inside but since they are in the same pods, having same port containers will not be allowed
