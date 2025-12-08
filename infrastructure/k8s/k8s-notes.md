@@ -71,8 +71,18 @@ kubectl exec -it nginx-test -- /bin/bash
 ### Gotchas
 - Pods can have one or more containers inside but since they are in the same pods, having same port containers will not be allowed
 - Manifests uses metadata.name to apply to the target
+- Memory is scarier than CPU
+- Limits are for protection
+- Requests are for scheduling
 
 ### Limits
 - Deployment sets the allowed CPU/ RAM limit
 - ConfigMap sets what the application will use even if it's way above the Deployment limit. The App will crash if not enough memory
 - If limited by CPU, the app will go slower, if RAM limit has reached, it will crash
+- Resource Request allows the Deployment to let the Control Plane look for a node that can accommodate the limit and will fail if no node can be found
+
+### Good rule of thumb:
+- Set memory requests ~10% higher than the average memory usage of your pods
+- Set CPU requests to 50% of the average CPU usage of your pods
+- Set memory limits ~100% higher that the average memory usage of your pods
+- Set CPU limits ~100% higher that the average CPU usage of your pods
