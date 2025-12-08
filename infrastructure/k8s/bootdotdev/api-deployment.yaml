@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: synergychat-api
-  labels:
-    app: nginx
 spec:
   replicas: 1
   selector:
@@ -17,9 +15,22 @@ spec:
       containers:
       - name: synergychat-api
         image: bootdotdev/synergychat-api:latest
-        envFrom:
-          - configMapRef:
-              name: synergychat-api-configmap
+        env:
+          - name: API_PORT
+            valueFrom:
+                configMapKeyRef:
+                  name: synergychat-api-configmap
+                  key: API_PORT
+          - name: API_DB_FILEPATH
+            valueFrom:
+              configMapKeyRef:
+                  name: synergychat-api-configmap
+                  key: API_DB_FILEPATH
+          - name: CRAWLER_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                  name: synergychat-api-configmap
+                  key: CRAWLER_BASE_URL
         volumeMounts:
           - name: synergychat-api-volume
             mountPath: /persist

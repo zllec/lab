@@ -4,6 +4,7 @@ metadata:
   labels:
     app: synergychat-crawler
   name: synergychat-crawler
+  namespace: crawler
 spec:
   replicas: 1
   selector:
