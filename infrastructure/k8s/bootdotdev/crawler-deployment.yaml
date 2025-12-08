@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: synergychat-crawler
@@ -24,21 +24,53 @@ spec:
           - configMapRef:
               name: synergychat-crawler-configmap
         volumeMounts:
-        - name: cache-volume
-          mountPath: /cache
+         - name: cache-volume
+           mountPath: /cache
       - name: synergychat-crawler-2
         image: bootdotdev/synergychat-crawler:latest
-        envFrom:
-          - configMapRef:
-              name: synergychat-crawler-configmap
+        # envFrom:
+        #   - configMapRef:
+        #       name: synergychat-crawler-configmap
+        env:
+            - name: CRAWLER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_PORT_2
+            - name: CRAWLER_KEYWORDS
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_KEYWORDS
+            - name: CRAWLER_DB_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_DB_PATH
         volumeMounts:
-        - name: cache-volume
-          mountPath: /cache
+         - name: cache-volume
+           mountPath: /cache
       - name: synergychat-crawler-3
         image: bootdotdev/synergychat-crawler:latest
-        envFrom:
-          - configMapRef:
-              name: synergychat-crawler-configmap
+        # envFrom:
+        #   - configMapRef:
+        #       name: synergychat-crawler-configmap
+        env:
+            - name: CRAWLER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_PORT_3
+            - name: CRAWLER_KEYWORDS
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_KEYWORDS
+            - name: CRAWLER_DB_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: synergychat-crawler-configmap
+                  key: CRAWLER_DB_PATH
         volumeMounts:
-        - name: cache-volume
-          mountPath: /cache
+         - name: cache-volume
+           mountPath: /cache
