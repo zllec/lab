@@ -89,9 +89,15 @@ kubectl get nodes
 
 # shows current config 
 kubectl config current-context
+kubectl config get-contexts
+
+# set namespace
+kubectl config set-context --current --namespace <NAMESPACE>
 
 # get namespaces
 kubectl get namespaces
+
+# set namespace
 
 # rename context
 kubectl config rename-context <cluster_name> <new_name>
