@@ -82,3 +82,8 @@ func getIssues(url string) ([]Issue, error) {
 
 - `for idx, item := range items`
   - range returns two items - index, value
+
+### DNS
+
+- domain name/ host name to IP address
+- managed by ICANN
