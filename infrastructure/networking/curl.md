@@ -15,6 +15,8 @@ curl -X POST https://api.boot.dev/v1/courses_rest_api/learn-http/users -H "Conte
 }' > /tmp/user.json
 ```
 
-```
-
+```bash
+curl -X POST localhost:8080/api/validate_chirp -H "Content-Type: application/json" -d '{
+"body": "This is my first chirp!",
+}'
 ```
