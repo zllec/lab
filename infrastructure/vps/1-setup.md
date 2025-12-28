@@ -1,15 +1,12 @@
-# VPS Setup Guide - Learning from Scratch
+# VPS Setup Guide
 
-*Last updated: August 2025*
-
-Got my hands on a VPS recently and wanted to document what I learned while setting it up. This guide covers the essential security and setup steps I wish I had known from the start.
+*Last updated: Dec 2025*
 
 ---
 
 ## Starting Fresh
 
-First things first - update everything. Your server probably hasn't been touched since it was created.
-
+First things first - update everything.
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt autoremove -y
@@ -23,8 +20,6 @@ sudo apt autoremove -y
 
 ## Don't Use Root for Everything
 
-Using root all the time is like driving with your seatbelt off - you'll probably be fine until you're not.
-
 ```bash
 # Make a new user
 sudo adduser adminleo
@@ -33,17 +28,15 @@ sudo adduser adminleo
 sudo usermod -aG sudo adminleo
 ```
 
-I used Bitwarden to generate a random crazy secure password.
+I used Bitwarden to generate a random secure password.
 
-If you want to generate passwords in the terminal (because why not):
+If you want to generate passwords in the terminal:
 
 ```bash
 LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | head -c 32 | xargs
 ```
 
-## SSH Keys Are Your Friend
-
-Passwords are weak. SSH keys are strong. Here's the deal:
+## SSH Keys > Passwords
 
 **On your computer:**
 
@@ -63,14 +56,14 @@ ssh-add ~/.ssh/id_ed25519_vps_root
 **Make connecting easier** by editing `~/.ssh/config`:
 
 ```toml
-Host hostinger
+Host vps
     HostName 72.xxx.xxx.xxx
     User root
     IdentityFile ~/.ssh/id_ed25519_vps_root
     IdentitiesOnly yes
 ```
 
-Now you can just type `ssh hostinger` instead of the full command.
+Now you can just type `ssh vps` instead of the full command.
 
 **On your server:**
 
@@ -154,7 +147,7 @@ sudo apt install -y curl wget git vim htop tree unzip fail2ban
 
 - `curl/wget` - download things
 - `git` - version control
-- `vim` - text editor (or use nano if you prefer)
+- `vim` - text editor
 - `htop` - better version of top
 - `tree` - see folder structures nicely
 - `unzip` - handle zip files
@@ -174,7 +167,7 @@ sudo systemctl status fail2ban
 
 It'll automatically start blocking IPs that try to brute force your SSH.
 
-## Set Your Timezone
+## Set Timezone
 
 Logs with wrong timestamps are annoying:
 
@@ -195,9 +188,6 @@ df -h
 
 # Check memory
 free -h
-
-# System info with cool ASCII art
-neofetch
 ```
 
 ## Basic Monitoring Commands
@@ -213,23 +203,13 @@ uname -a
 w
 ```
 
-## What I Actually Learned
+## Key takeaways
 
-- Security isn't optional - every step here prevents real attacks
+- Security isn't optional
 - SSH keys are way better than passwords
 - Firewalls are essential, not optional
 - Always test before you lock yourself out
 - Document everything (hence this guide)
-
-## What's Next
-
-Now that I have a secure box, I'm thinking about:
-
-- [Docker installation](./docker-install.md) - For containerized applications
-- [Kubernetes basics](../k8s/01-minikube-basics.md) - Container orchestration learning
-- Kubernetes The Hard Way
-- Maybe a web server
-- Some kind of monitoring
 
 ## Quick Commands for Later
 
@@ -249,5 +229,3 @@ sudo ufw status
 # Check what's listening
 ss -tuln
 ```
-
-That's it. Nothing revolutionary, just a solid foundation that won't get pwned immediately. The internet is full of bots scanning for weak servers, be careful out there.
