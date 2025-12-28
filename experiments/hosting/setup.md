@@ -44,7 +44,7 @@ sudo apt install nginx -y
 Create a new configuration file for your domain:
 
 ```bash
-sudo nano /etc/nginx/sites-available/yourdomain.com
+sudo vim /etc/nginx/sites-available/yourdomain.com
 ```
 
 Add the following configuration:
@@ -185,13 +185,10 @@ sudo tail -f /var/log/nginx/error.log
 sudo tail -f /var/log/nginx/access.log
 ```
 
-## Summary
+## Key Takeaways
 
-You've successfully:
-- ✅ Configured DNS to point your domain to your VPS
-- ✅ Installed and configured Nginx web server
-- ✅ Set up proper firewall rules
-- ✅ Secured your site with a free SSL certificate
-- ✅ Configured automatic HTTPS redirect
-
-Your website is now production-ready and accessible via HTTPS!
+- Configured DNS to point your domain to your VPS
+- Installed and configured Nginx web server
+- Set up proper firewall rules
+- Secured your site with a free SSL certificate
+- Configured automatic HTTPS redirect
