@@ -25,31 +25,19 @@ func main() {
 		}
 
 		if isEOF == 0 {
-			log.Println("end of file")
-			continue
+			return
 		}
 
 		if strings.Contains(string(a), "\n") {
 			str := strings.Split(string(a), "\n")
-			lastPart := str[:len(str)-1]
-
-			line = line + strings.Join(str[0:len(str)-1], "")
-			log.Println(line)
+			line = line + strings.Join(str[:1], "")
+			log.Println("read:", line)
 
 			line = ""
-			line = line + strings.Join(lastPart, "")
+			line = line + strings.Join(str[1:], "")
 			continue
 		}
 
 		line = line + string(a)
-
-		// line = line + string(a)
-		//
-		// if strings.Contains(string(a), "\n") {
-		// 	fmt.Printf("read: %s", line)
-		// 	line = ""
-		// 	continue
-		// }
 	}
-
 }
